@@ -11,11 +11,11 @@ class Coche {
 
     
     // Constructor
-    public function __construct() {
-        $this->brand = 'Ford';
-        $this->model = 'Mustang';
-        $this->color = 'azul';
-        $this->speed = 120;
+    public function __construct($brand, $model, $color, $speed) {
+        $this->brand = $brand;
+        $this->model = $model;
+        $this->color = $color;
+        $this->speed = $speed;
     }
 
 
