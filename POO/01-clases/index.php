@@ -35,3 +35,6 @@ class Coche {
 
 // Instancia
 $mycar = new Coche();
+
+// Usando metodos
+$mycar->accelerate();
