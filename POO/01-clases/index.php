@@ -32,3 +32,6 @@ class Coche {
         return $this->speed;
     }
 }
+
+// Instancia
+$mycar = new Coche();
