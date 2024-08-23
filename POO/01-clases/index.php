@@ -38,3 +38,8 @@ $mycar = new Coche();
 
 // Usando metodos
 $mycar->accelerate();
+$mycar->setColor('rojo');
+
+// Usando atributos
+echo $mycar->getColor();
+echo $mycar->getSpeed();
