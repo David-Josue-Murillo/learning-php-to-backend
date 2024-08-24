@@ -4,10 +4,10 @@
 class Coche {
     
     // Atributos
-    public $brand; // Marca
-    public $model; // Modelo
-    public $color;
-    public $speed; // Velocidad
+    private $brand; // Marca
+    private $model; // Modelo
+    private $color;
+    private $speed; // Velocidad
 
     
     // Constructor

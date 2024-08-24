@@ -9,6 +9,9 @@ class Coche {
     public $color;
     public $speed; // Velocidad
 
+    public function __construct() {
+        
+    }
 
     // Métodos
     public function getColor() {
