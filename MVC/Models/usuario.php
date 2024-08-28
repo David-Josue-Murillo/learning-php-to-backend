@@ -6,13 +6,6 @@ class Usuario {
     public $email;
     public $password;
 
-    public function __construct($nombre, $apellido, $email, $password) {    
-        $this->nombre = $nombre;
-        $this->apellido = $apellido;
-        $this->email = $email;
-        $this->password = $password;
-    }
-
     public function getNombre() {
         return $this->nombre;
     }

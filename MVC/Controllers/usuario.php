@@ -2,10 +2,13 @@
 
 class UsuarioController {
     public function showAll() {
-        require_once '../Models/usuario.php';
+        require_once 'Models/usuario.php';
 
         // Instancia
         $user = new Usuario();
-        $user->getAll();
+        $allUsers = $user->getAll();
+
+        // Vista
+        require_once 'Views/users/showAll.php';
     }
 }

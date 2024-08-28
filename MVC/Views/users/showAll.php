@@ -1,1 +1,1 @@
-<?php
+<h1>INFO: <?= $allUsers ?></h1>
