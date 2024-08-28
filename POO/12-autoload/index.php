@@ -13,13 +13,19 @@ echo $entrada->titulo. "<br/>";
 echo $entrada->fecha. "<br/>";
  */
 
+ use MisClases\Categoria;
+ use MisClases\Entrada;
+ use MisClases\Usuario;
+
  class Principal {
     public$usuario;
     public $categoria;
     public $entrada;
 
     public function __construct() {
-        $this->usuario = new MisClases\Usuario();
+        $this->usuario = new Usuario();
+        $this->categoria = new Categoria("Reviews");
+        $this->entrada = new Entrada();
     }
  }
 
