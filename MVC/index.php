@@ -3,8 +3,8 @@
 
 require_once 'Controllers/usuario.php';
 
-if(isset($_GET['controller']) && class_exists($_GET['controller'])) {
-    $controller = $_GET['controller'];
+if(isset($_GET['controller']) && class_exists($_GET['controller'].'Controller')) {
+    $controller = $_GET['controller'].'Controller';
     $usuarioController = new $controller();
 
     if(isset($_GET['action']) && method_exists($usuarioController, $_GET['action'])) {
