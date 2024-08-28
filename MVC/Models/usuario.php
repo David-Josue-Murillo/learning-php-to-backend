@@ -35,6 +35,6 @@ class Usuario {
     }
 
     public function getAll() {
-        return "Sacando todos los usuarios";
+        return "Mostrando todos los usuarios";
     }
 }

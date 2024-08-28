@@ -11,4 +11,8 @@ class UsuarioController {
         // Vista
         require_once 'Views/users/showAll.php';
     }
+
+    public function createUsers() {
+        require_once 'Views/users/create.php';
+    }
 }
