@@ -42,6 +42,6 @@ class Usuario {
     }
 
     public function getAll() {
-        echo "Sacando toda la información";
+        return "Sacando todos los usuarios";
     }
 }
