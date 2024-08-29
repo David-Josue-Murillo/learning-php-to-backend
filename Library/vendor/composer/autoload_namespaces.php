@@ -6,4 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPThumb\\Tests' => array($vendorDir . '/masterexploder/phpthumb/tests'),
+    'PHPThumb' => array($vendorDir . '/masterexploder/phpthumb/src'),
 );

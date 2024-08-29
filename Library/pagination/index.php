@@ -6,8 +6,8 @@ $conexion = new mysqli('localhost', 'root', 'root', 'notas_master');
 $conexion->query("SET NAMES utf8");
 
 // Consulta
-$query = $conexion->query("SELECT * FROM entradas");
-$numElements = $query->num_rows;
+$query = $conexion->query("SELECT COUNT(id) as 'total' FROM entradas");
+$numElements = $query->fetch_object()->total;
 $numElementsPage = 2;
 
 // Paginación
