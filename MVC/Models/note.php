@@ -1,8 +1,10 @@
 <?php
+require_once 'ModelBase.php';
 
-class Note {
+class Note extends ModelBase {
+    public $usuario_id;
     public $titulo;
-    public $contenido;
+    public $descripcion;
 
     public function getTitulo() {
         return $this->titulo;
@@ -12,11 +14,18 @@ class Note {
         $this->titulo = $titulo;
     }
 
-    public function getContenido() {
-        return $this->contenido;
+    public function getDescripcion() {
+        return $this->descripcion;
     }
 
-    public function setContenido($contenido) {
-        $this->contenido = $contenido;
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    public function save() {
+        $sql = "INSERT INTO entradas (usuario_id, titulo, descripcion, fecha) VALUES ($this->usuario_id, '$this->titulo', '$this->descripcion', CURDATE())";
+
+        $save = $this->db->query($sql);
+        return $save;
     }
 }
