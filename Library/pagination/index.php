@@ -26,3 +26,5 @@ while ($nota = $notas->fetch_assoc()) {
     echo "<h1>".$nota['titulo']."</h1>";
     echo "<h3>".$nota['descripcion']."</h3>";
 }
+
+$pagination->render();
