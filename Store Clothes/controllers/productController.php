@@ -3,6 +3,8 @@
 class ProductController {
     
     public function index() {
-        echo 'Hola';
+        
+        // Render to feature products
+        require_once 'views/products/featured.php';
     }
 }
