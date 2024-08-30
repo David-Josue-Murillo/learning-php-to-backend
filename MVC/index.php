@@ -18,3 +18,4 @@ if(isset($_GET['controller']) && class_exists($_GET['controller'].'Controller'))
     echo "No existe el controlador";
 }
 
+    
