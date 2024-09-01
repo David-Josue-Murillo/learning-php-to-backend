@@ -1,6 +1,7 @@
 <?php
 
 require_once 'autoload.php';
+require_once 'config/parameters.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
 
@@ -15,8 +16,8 @@ if(isset($_GET['controller'])) {
         echo "No existe la acción";
     }
 } else {
-    echo 'La pagina no existe';
-    exit();
+    $error = new errorController();
+    $error->index();
 }
 
 require_once 'views/layout/footer.php';
