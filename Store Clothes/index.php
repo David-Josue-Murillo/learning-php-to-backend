@@ -13,7 +13,7 @@ if(isset($_GET['controller'])) {
         $action = $_GET['action'];
         $userController->$action();
     } elseif (!isset($_GET['controller']) && isset($_GET['action'])) {
-        $nameController = controllerDefault.'Controller';
+        $actionDefault = controllerDefault.'Controller';
     } else {
         $error->index();
     }
