@@ -12,9 +12,13 @@ if(isset($_GET['controller'])) {
     if(isset($_GET['action']) && method_exists($userController, $_GET['action'])) {
         $action = $_GET['action'];
         $userController->$action();
+    } elseif (!isset($_GET['controller']) && isset($_GET['action'])) {
+        $nameController = controllerDefault.'Controller';
     } else {
-        echo "No existe la acción";
+        $error->index();
     }
+} elseif (!isset($_GET['controller']) && isset($_GET['action'])) {
+    $nameController = controllerDefault.'Controller';
 } else {
     $error = new errorController();
     $error->index();
