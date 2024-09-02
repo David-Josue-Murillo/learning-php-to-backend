@@ -8,35 +8,30 @@ class User {
     private $password;
     private $rol;
     private $imagen;
+    private $db;
 
-    public function __construct($id, $nombre, $apellidos, $email, $password, $rol, $imagen) {
-        $this->id = $id;
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->email = $email;
-        $this->password = $password;
-        $this->rol = $rol;
-        $this->imagen = $imagen;
+    public function __construct() {
+        $this->db = Database::connect();
     }
-
+ 
     public function getId() {
-        return $this->id;
+        return $this->db->real_escape_string($this->id);
     }
 
     public function getNombre() {
-        return $this->nombre;
+        return $this->db->real_escape_string($this->nombre);
     }
 
     public function getApellidos() {
-        return $this->apellidos;
+        return $this->db->real_escape_string($this->apellidos);
     }
 
     public function getEmail() {
-        return $this->email;
+        return $this->db->real_escape_string($this->email);
     }
 
     public function getPassword() {
-        return $this->password;
+        return password_hash($this->db->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
     }
 
     public function getRol() {
@@ -73,5 +68,17 @@ class User {
 
     public function setImagen($imagen) {
         $this->imagen = $imagen;
+    }
+
+    public function save() {
+        $sql = "INSERT INTO usuarios (nombre, apellidos, email, password, rol, imagen) VALUES ('$this->nombre', '$this->apellidos', '$this->email', '$this->password', '$this->rol', '$this->imagen')";
+        $save = $this->db->query($sql);
+        
+        $result = false;
+        if($save) {
+            $result = true;
+        }
+
+        return $result;
     }
 }
