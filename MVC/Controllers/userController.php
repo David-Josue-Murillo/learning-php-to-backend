@@ -6,7 +6,6 @@ class UsuarioController {
 
         // Instancia
         $user = new Usuario();
-        $allUsers = $user->getAll();
 
         // Vista
         require_once 'Views/users/showAll.php';
