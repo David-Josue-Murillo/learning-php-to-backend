@@ -10,28 +10,29 @@ class User {
     private $imagen;
     private $db;
 
+    // Methods GET
     public function __construct() {
         $this->db = Database::connect();
     }
  
     public function getId() {
-        return $this->db->real_escape_string($this->id);
+        return $this->id;
     }
 
     public function getNombre() {
-        return $this->db->real_escape_string($this->nombre);
+        return $this->nombre;
     }
 
     public function getApellidos() {
-        return $this->db->real_escape_string($this->apellidos);
+        return $this->apellidos;
     }
 
     public function getEmail() {
-        return $this->db->real_escape_string($this->email);
+        return $this->email;
     }
 
     public function getPassword() {
-        return password_hash($this->db->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
+        return $this->password;
     }
 
     public function getRol() {
@@ -42,24 +43,26 @@ class User {
         return $this->imagen;
     }
 
+
+    // Methods SET
     public function setId($id) {
-        $this->id = $id;
+        $this->id = $this->db->real_escape_string($id);
     }
 
     public function setNombre($nombre) {
-        $this->nombre = $nombre;
+        $this->nombre = $this->db->real_escape_string($nombre);
     }
 
     public function setApellidos($apellidos) {
-        $this->apellidos = $apellidos;
+        $this->apellidos = $this->db->real_escape_string($apellidos);
     }   
 
     public function setEmail($email) {
-        $this->email = $email;
+        $this->email = $this->db->real_escape_string($email);
     }
 
     public function setPassword($password) {
-        $this->password = $password;
+        $this->password = password_hash($this->db->real_escape_string($password), PASSWORD_BCRYPT, ['cost' => 4]);;
     }
 
     public function setRol($rol) {
