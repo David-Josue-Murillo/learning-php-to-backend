@@ -24,10 +24,12 @@ a:hover{
 
 .alert_green{
     color:green;
+    text-align: center;
 }
 
 .alert_red{
     color:red;
+    text-align: center;
 }
 
 table{
