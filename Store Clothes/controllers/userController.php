@@ -41,4 +41,13 @@ class UserController {
             header("Location: index.php?controller=user&action=register");
         }
     }
+
+    public function login() {
+        if(isset($_POST)){
+            if(isset($_POST['email']) && isset($_POST['password'])) {   
+            }
+        }
+
+        header("Location:".url);
+    }
 }

@@ -84,4 +84,30 @@ class User {
 
         return $result;
     }
+
+    public function login($email, $password) {
+        $sql = "SELECT id FROM usuarios WHERE email='$email'";
+        $result = $this->db->query($sql);
+
+        if($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $id = $row['id'];
+
+            $sql = "SELECT * FROM usuarios WHERE id='$id'";
+            $result = $this->db->query($sql);
+
+            if($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $this->setId($row['id']);
+                $this->setNombre($row['nombre']);
+                $this->setApellidos($row['apellidos']);
+                $this->setEmail($row['email']);
+                $this->setPassword($row['password']);
+                $this->setRol($row['rol']);
+                $this->setImagen($row['imagen']);
+
+                $result = true;
+            }
+        }
+    }
 }
