@@ -1,6 +1,17 @@
 
 <div class="form_container">
     <h1 class="title__register">Registrarse</h1>
+    
+    <?php
+        if(isset($_SESSION['register']) && $_SESSION['register'] == 'complete') {
+            echo '<div class="alert_green">Registro completado</div>';
+        } elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'failded') {
+            echo '<div class="alert_red">Error al registrar</div>';
+        } elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'empty') {
+            echo '<div class="alert_red">Por favor, rellene todos los campos</div>';
+        }
+    ?>
+
     <form action="<?=url?>user/save" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
