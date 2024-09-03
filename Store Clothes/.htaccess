@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    ErrorDocument 404 localhost:8000/index.php?controller=product&action=index
+    ErrorDocument 404 hhtp://localhost:8000/error/
     
     RewriteCond %{SCRIPR_FILENAME} !-d
     RewriteCond %{SCRIPR_FILENAME} !-f
-    RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2 [L,QSA]
+    RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
 </IfModule>

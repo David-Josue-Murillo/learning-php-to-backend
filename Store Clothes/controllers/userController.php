@@ -21,9 +21,18 @@ class UserController {
             $user->setRol($_POST['rol']);
             $user->setImagen($_POST['imagen']);
 
-            if($user->save()) {
+            $save = $user->save();
+            if($save) {
+                $_SESSION['user'] = $user->getId();
+                $_SESSION['register'] = 'complete';
                 header("Location: index.php?controller=user&action=showAll");
+            } else {
+                $_SESSION['register'] = 'failded';
+                header("Location: index.php?controller=user&action=register");
             }
+        } else {
+            $_SESSION['register'] = 'empty';
+            header("Location: index.php?controller=user&action=register");
         }
     }
 }

@@ -1,7 +1,7 @@
 
 <div class="form_container">
     <h1 class="title__register">Registrarse</h1>
-    <form action="index.php?controller=user&action=save" method="post">
+    <form action="<?=url?>user/save" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
 
