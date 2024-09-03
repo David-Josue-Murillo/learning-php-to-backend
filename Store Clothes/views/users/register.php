@@ -12,7 +12,7 @@
         }
     ?>
 
-    <form action="<?=url?>user/save" method="post">
+    <form action="index.php?controller=user&action=save" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
 
