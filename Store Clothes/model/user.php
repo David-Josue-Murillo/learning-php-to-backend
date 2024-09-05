@@ -87,27 +87,27 @@ class User {
 
     public function login($email, $password) {
         $sql = "SELECT id FROM usuarios WHERE email='$email'";
-        $result = $this->db->query($sql);
+        $query = $this->db->query($sql);
+        $result = false;
 
-        if($result && $result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $id = $row['id'];
+        if($query && $query->num_rows > 0) {
+            $user = $query->fetch_assoc();
 
-            $sql = "SELECT * FROM usuarios WHERE id='$id'";
-            $result = $this->db->query($sql);
+            //Verify password
+            $verify = password_verify($password, $user['password']);
 
-            if($result && $result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $this->setId($row['id']);
-                $this->setNombre($row['nombre']);
-                $this->setApellidos($row['apellidos']);
-                $this->setEmail($row['email']);
-                $this->setPassword($row['password']);
-                $this->setRol($row['rol']);
-                $this->setImagen($row['imagen']);
-
-                $result = true;
+            if($verify) {
+                $result = $user;
+                /*$this->setId($user['id']);
+                $this->setNombre($user['nombre']);
+                $this->setApellidos($user['apellidos']);
+                $this->setEmail($user['email']);
+                $this->setPassword($user['password']);
+                $this->setRol($user['rol']);
+                $this->setImagen($user['imagen']);*/
             }
         }
+
+        return $result;
     }
 }
