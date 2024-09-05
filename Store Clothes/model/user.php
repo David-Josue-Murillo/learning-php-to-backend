@@ -85,10 +85,14 @@ class User {
         return $result;
     }
 
-    public function login($email, $password) {
+    public function login() {
+
+        $email = $this->email;
+        $password = $this->password;
+        $result = false;
+
         $sql = "SELECT id FROM usuarios WHERE email='$email'";
         $query = $this->db->query($sql);
-        $result = false;
 
         if($query && $query->num_rows > 0) {
             $user = $query->fetch_assoc();

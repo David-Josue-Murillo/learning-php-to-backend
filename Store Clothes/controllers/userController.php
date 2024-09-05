@@ -45,6 +45,10 @@ class UserController {
     public function login() {
         if(isset($_POST)){
             if(isset($_POST['email']) && isset($_POST['password'])) {   
+                $user = new User();
+                $user->setEmail($_POST['email']);
+                $user->setPassword($_POST['password']);
+                $identity = $user->login();
             }
         }
 
