@@ -17,7 +17,7 @@
         <a href="#">Mis pedidos</a>
 
         <?php if(isset($_SESSION['admin'])) : ?>
-            <a href="#">Gestionar pedidos</a>
+            <a href="index.php?controller=category&action=create">Gestionar pedidos</a>
             <a href="#">Gestionar categorias</a>
             <a href="#">Gestionar productos</a>
         <?php endif; ?>

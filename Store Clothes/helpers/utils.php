@@ -7,4 +7,12 @@ class Utils {
             unset($_SESSION[$name]);
         }
     }
+
+    public static function isAdmin() {
+        if(isset($_SESSION['admin'])) {
+            header("Location:".url);
+        } else {
+            return true;
+        }
+    }
 }
