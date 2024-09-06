@@ -2,6 +2,6 @@
  class CategoryController {
     
     public function index() {
-        echo 'Hola';
+        require_once 'views/category/index.php';
     }
  }
