@@ -17,6 +17,7 @@
         <a href="#">Mis pedidos</a>
         <a href="#">Gestionar pedidos</a>
         <a href="#">Gestionar categorias</a>
+        <a href="index.php?controller=user&action=logout">Cerrar Sesión</a>
     <?php endif; ?>
     </div>
 </aside>
