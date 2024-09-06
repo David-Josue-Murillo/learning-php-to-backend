@@ -62,7 +62,7 @@ class User {
     }
 
     public function setPassword($password) {
-        $this->password = password_hash($this->db->real_escape_string($password), PASSWORD_BCRYPT, ['cost' => 4]);;
+        $this->password = $password;
     }
 
     public function setRol($rol) {
@@ -94,7 +94,7 @@ class User {
         $sql = "SELECT id FROM usuarios WHERE email='$email'";
         $query = $this->db->query($sql);
 
-        if($query && $query->num_rows > 0) {
+        if($query && $query->num_rows > 1) {
             $user = $query->fetch_assoc();
 
             //Verify password
@@ -102,13 +102,6 @@ class User {
 
             if($verify) {
                 $result = $user;
-                /*$this->setId($user['id']);
-                $this->setNombre($user['nombre']);
-                $this->setApellidos($user['apellidos']);
-                $this->setEmail($user['email']);
-                $this->setPassword($user['password']);
-                $this->setRol($user['rol']);
-                $this->setImagen($user['imagen']);*/
             }
         }
 

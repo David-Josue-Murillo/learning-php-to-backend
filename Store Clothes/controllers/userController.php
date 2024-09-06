@@ -49,6 +49,16 @@ class UserController {
                 $user->setEmail($_POST['email']);
                 $user->setPassword($_POST['password']);
                 $identity = $user->login();
+
+                if($identity && is_object($identity)) {
+                    $_SESSION['identity'] = $identity;
+
+                    if($identity->getRol() == 'admin') {
+                        $_SESSION['admin'] = true;
+                    }
+                } else {
+                    $_SESSION['error_login'] = 'Identificación fallida';
+                }
             }
         }
 
