@@ -34,7 +34,7 @@ a:hover{
 
 table{
     text-align: center;
-    width: 100%;
+    width: 70%;
     border-bottom: 1px solid #ccc;
 }
 
@@ -423,6 +423,12 @@ button{
 
 
 /*REGISTRO*/
+.title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .title__register {
     text-align: center;
     margin-top: 20px;
