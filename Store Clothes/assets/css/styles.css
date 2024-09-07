@@ -264,10 +264,9 @@ button{
 
 /*CENTRAL*/
 #central{
-    width: 72%;
-    min-height: 500px;
+    width: 100%;
+    min-height: 200px;
     float: right;
-    border-left: 1px solid #ccc;
     box-shadow: -5px -1px 5px #ddd;
     padding:25px;
 }
@@ -284,8 +283,14 @@ button{
 }
 
 /*PRODUCTOS*/
+.container__product{
+    width: 72%;
+    margin: 0px auto;
+    display: flex;
+}
+
 .product{
-    width: 30%;
+    width: 100%;
     float:left;
     margin-left: 10px;
     margin-right: 10px;
