@@ -25,6 +25,20 @@ class Category {
         $this->nombre = $this->db->real_escape_string($nombre);
     }
 
+    public function getALl() {
+        $sql = "SELECT * FROM categorias";
+        $query = $this->db->query($sql);
+
+        if($query && $query->num_rows > 0) {
+            $result = array();
+            while($row = $query->fetch_assoc()) {
+                $result[] = $row;
+            }
+        }
+
+        return $result;
+    }
+
     public function save() {
         $sql = "INSERT INTO categorias (nombre) VALUES ('$this->nombre')";
         $save = $this->db->query($sql);

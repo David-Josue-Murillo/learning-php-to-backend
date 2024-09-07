@@ -1,3 +1,4 @@
+<?php require_once 'helpers/utils.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,23 +15,18 @@
         </div>
     </header>
 
+    <?php $categories = Utils::showCategory(); ?>
     <nav id="menu">
         <ul>
             <li>
                 <a href="index.php">Inicio</a>
             </li>
-            <li>
-                <a href="index.php">Categoria 1</a>
-            </li>
-            <li>
-                <a href="index.php">Categoria 2</a>
-            </li>
-            <li>
-                <a href="index.php">Categoria 3</a>
-            </li>
-            <li>
-                <a href="index.php">Categoria 4</a>
-            </li>
+
+            <?php foreach($categories as $category) : ?>
+                <li>
+                    <a href="index.php?controller=product&action=index&category=<?=$category['id']?>"><?=$category['nombre']?></a>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
 
