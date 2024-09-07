@@ -19,7 +19,7 @@ class UserController {
                 $user->setNombre($_POST['nombre']);
                 $user->setApellidos($_POST['apellidos']);
                 $user->setEmail($_POST['email']);
-                $user->setPassword($_POST['password']);
+                $user->setPassword(password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 4]));
                 $user->setRol($_POST['rol']);
                 $user->setImagen($_POST['imagen']);
 
@@ -27,7 +27,7 @@ class UserController {
                 if($save) {
                     $_SESSION['user'] = $user->getId();
                     $_SESSION['register'] = 'complete';
-                    header("Location: index.php?controller=user&action=register");
+                    header("Location: index.php");
                 } else {
                     $_SESSION['register'] = 'failded';
                     header("Location: index.php?controller=user&action=register");
