@@ -38,7 +38,7 @@ class Category {
     }
 
     public function getCategories() {
-        $sql = "SELECT * FROM categorias";
+        $sql = "SELECT * FROM categorias ORDER BY id DESC";
         $query = $this->db->query($sql);
 
         if($query && $query->num_rows > 0) {

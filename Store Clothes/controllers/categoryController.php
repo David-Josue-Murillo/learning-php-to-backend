@@ -17,7 +17,9 @@ require_once 'model/category.php';
 
     public function save() {
         Utils::isAdmin();
-        if(isset($_POST)){
+
+        // Check if the form is submitted
+        if(isset($_POST) && isset($_POST['nombre'])) {
             $category = new Category();
             $category->setNombre($_POST['nombre']);
 
@@ -27,8 +29,8 @@ require_once 'model/category.php';
             } else {
                 header("Location: index.php?controller=category&action=create");
             }
-        } else {
-            header("Location: index.php?controller=category&action=create");
-        }
+        } 
+            
+        header("Location: index.php?controller=category&action=index");
     }
  }

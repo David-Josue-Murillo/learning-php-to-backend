@@ -2,7 +2,10 @@
 
 class errorController {
     public function index() {
-        echo 'La pagina no existe';
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->index();
+
         exit();
     }
 }
