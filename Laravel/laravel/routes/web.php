@@ -17,5 +17,15 @@ Route::get('/movies/{title}/{year?}', function($title = 'No hay una pelicula sel
     ));
 })->where(array(
     'title' => '[a-zA-Z0-9\s]+',
-    'year' => '[0-9]{4}',
+    'year' => '[0-9]{4}'
 ));
+
+Route::get('/list-movies', function(){
+    $title = 'Listado de peliculas';
+    $lists = array('Batman', 'Superman', 'Spiderman', 'Iron Man', 'Captain America', 'Thor', 'Wonder Woman');
+
+    return view('movies.list')
+        ->with('title', $title)
+        ->with('lists', $lists)
+    ;
+});
