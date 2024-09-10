@@ -7,5 +7,6 @@
 </head>
 <body>
     <h1>La pelicula es: {{ $title }}</h1>
+    <h2>La pelicula es de: {{ $year }}</h2>
 </body>
 </html>

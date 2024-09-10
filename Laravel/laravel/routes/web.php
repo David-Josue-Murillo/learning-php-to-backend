@@ -10,6 +10,12 @@ Route::get('/show-date', function() {
     return view('show-date');
 });
 
-Route::get('/movies/{title?}', function($title = 'No hay una pelicula seleccionada') { 
-    return view('movies', array('title' => $title));
-});
+Route::get('/movies/{title}/{year?}', function($title = 'No hay una pelicula seleccionada', $year = 2024) { 
+    return view('movies', array(
+        'title' => $title,
+        'year' => $year,
+    ));
+})->where(array(
+    'title' => '[a-zA-Z0-9\s]+',
+    'year' => '[0-9]{4}',
+));
