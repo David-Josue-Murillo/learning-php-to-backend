@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\MovieController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -7,6 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::get('/show-date', function() {
     return view('show-date');
 });
@@ -33,4 +36,10 @@ Route::get('/list-movies', function(){
 
 Route::get('/page-generic', function(){
     return view('page');
+});
+*/
+
+// Controlador de peliculas
+Route::get('/movie', function() {
+    return MovieController::index();
 });
