@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,8 @@ Route::get('/list-movies', function(){
         ->with('title', $title)
         ->with('lists', $lists)
     ;
+});
+
+Route::get('/page-generic', function(){
+    return view('page');
 });
