@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,10 @@ Route::get('/page-generic', function(){
 */
 
 // Controlador de peliculas
-Route::get('/movie', function() {
-    return MovieController::index();
-});
+Route::get('/movie', [MovieController::class, 'index']);
+
+Route::get('/movie-datails', [MovieController::class, 'show'])
+            ->where('title', '[a-zA-Z0-9\s]+')
+            ->where('year', '[0-9]{4}');
+
+Route::resource('/user', UserController::class);
