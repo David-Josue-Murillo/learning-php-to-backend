@@ -43,8 +43,11 @@ Route::get('/page-generic', function(){
 // Controlador de peliculas
 Route::get('/movie', [MovieController::class, 'index']);
 
+Route::get('/redirect', [MovieController::class, 'redirect']);
+
 Route::get('/movie-datails', [MovieController::class, 'show'])
             ->where('title', '[a-zA-Z0-9\s]+')
             ->where('year', '[0-9]{4}');
+
 
 Route::resource('/user', UserController::class);

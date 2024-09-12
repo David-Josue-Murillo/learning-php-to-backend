@@ -19,4 +19,8 @@ class MovieController extends Controller {
             ['title' => $title, 'year' => $year]
         );
     }
+
+    public function redirect() {
+        return redirect('/movie');
+    }
 }
