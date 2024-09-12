@@ -23,4 +23,10 @@ class MovieController extends Controller {
     public function redirect() {
         return redirect('/movie');
     }
+
+    public function details($year = null){
+        return view('movies.details',
+            ['year' => $year]
+        );
+    }
 }
