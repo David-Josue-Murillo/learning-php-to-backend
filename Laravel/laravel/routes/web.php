@@ -45,7 +45,7 @@ Route::get('/movie', [MovieController::class, 'index']);
 
 Route::get('/redirect', [MovieController::class, 'redirect']);
 
-Route::get('/details/{year?}', [MovieController::class, 'details']);
+Route::get('/details/{year?}', [MovieController::class, 'details'])->middleware('testyear');
 
 Route::get('/movie-datails', [MovieController::class, 'show'])
             ->where('title', '[a-zA-Z0-9\s]+')

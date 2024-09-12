@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller {
