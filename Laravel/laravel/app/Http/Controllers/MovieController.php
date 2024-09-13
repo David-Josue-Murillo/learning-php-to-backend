@@ -30,4 +30,17 @@ class MovieController extends Controller {
             ['year' => $year]
         );
     }
+
+    public function form() {
+        return view('movies.form');
+    }
+
+    public function getForm(Request $request){
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        return "El nombre es: $name y el email es: $email";
+
+    }
+    
 }

@@ -52,4 +52,7 @@ Route::get('/movie-datails', [MovieController::class, 'show'])
             ->where('year', '[0-9]{4}');
 
 
+Route::get('form', [MovieController::class, 'form']);
+Route::post('get-form', [MovieController::class, 'getForm'])->name('getFormulario');
+
 Route::resource('/user', UserController::class);
