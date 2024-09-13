@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MovieController;
@@ -56,3 +57,10 @@ Route::get('form', [MovieController::class, 'form']);
 Route::post('get-form', [MovieController::class, 'getForm'])->name('getFormulario');
 
 Route::resource('/user', UserController::class);
+
+
+
+// RUtas de categorias
+Route::group(['prefix'=>'category'], function() {
+    Route::get('index', [CategoryController::class, 'index']);
+});
