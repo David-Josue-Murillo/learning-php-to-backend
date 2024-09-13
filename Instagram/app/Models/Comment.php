@@ -13,11 +13,11 @@ class Comment extends Model
 
     // Relación de Many To One
     public function user() {
-        $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Relación de Many To One
     public function image() {
-        return $this->belongsTo('App\Image', 'image_id');
+        return $this->belongsTo(Image::class, 'image_id');
     }
 }
