@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    /*public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-    }
+    }*/
 
     /**
      * Reverse the migrations.
