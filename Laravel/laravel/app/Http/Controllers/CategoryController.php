@@ -30,7 +30,7 @@ class CategoryController extends Controller
     }
 
     public function create() {
-        return view('category.form')->with('status', 'Fruta creada correctamente');
+        return view('category.form')->with('status', 'Categoria creada correctamente');
     }
 
     public function save(Request $request) {
@@ -47,6 +47,29 @@ class CategoryController extends Controller
                     ->where('id', $id)
                     ->delete();
 
-        return redirect()->route('index')->with('status', 'Fruta eliminada correctamente');
+        return redirect()->route('index')->with('status', 'Categoria eliminada correctamente');
+    }
+
+    public function edit($id) {
+        // get register of the database
+        $category = DB::table('categorias')
+                    ->where('id', $id)
+                    ->first();
+
+        // move the object into view and fill in the form
+        return view('category.form', [
+            'category' => $category
+        ]);
+    }
+
+    public function update(Request $request ) {
+        $id = $request->input('id');
+        $category = DB::table('categorias')
+                    ->where('id', $id)
+                    ->update( array(
+                        'nombre' => $request->input('name')
+                    ));
+
+        return redirect()->route('index')->with('status', 'Categoria modificada correctamente');
     }
 }

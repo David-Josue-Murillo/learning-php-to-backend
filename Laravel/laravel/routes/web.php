@@ -67,5 +67,6 @@ Route::group(['prefix'=>'category'], function() {
     Route::get('create', [CategoryController::class, 'create'])->name('create');
     Route::post('save', [CategoryController::class, 'save'])->name('save');
     Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete');
-
+    Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit');
+    Route::post('update', [CategoryController::class, 'update'])->name('update');
 });
