@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relación One To Many 
+    public function images() {
+        return $this->hasMany('App\Image');
+    }
 }
