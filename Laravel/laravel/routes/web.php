@@ -62,6 +62,10 @@ Route::resource('/user', UserController::class);
 
 // RUtas de categorias
 Route::group(['prefix'=>'category'], function() {
-    Route::get('index', [CategoryController::class, 'index']);
+    Route::get('index', [CategoryController::class, 'index'])->name('index');
     Route::get('index/{id}', [CategoryController::class, 'getCetegory'])->name('getCategory');
+    Route::get('create', [CategoryController::class, 'create'])->name('create');
+    Route::post('save', [CategoryController::class, 'save'])->name('save');
+    Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete');
+
 });
