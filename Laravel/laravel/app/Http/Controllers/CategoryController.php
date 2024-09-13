@@ -13,8 +13,16 @@ class CategoryController extends Controller
     public function index() {
         $categories = DB::table('categorias')->get();
 
-        return view('category.index',
-        ['categories' => $categories]
-    );
+        return view('category.index',[
+            'categories' => $categories
+            ]);
+    }
+
+    public function getCetegory($id) {
+        $category = DB::table('categorias')->where('id', '=', $id)->first();
+    
+        return view('category.category', [
+            'category' => $category
+        ]);
     }
 }

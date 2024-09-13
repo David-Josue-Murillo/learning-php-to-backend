@@ -2,6 +2,10 @@
 
 <ul>
     @foreach ($categories as $category)
-        <li>{{ $category->nombre }}</li>
+        <li>
+            <a href="{{ route('getCategory', ['id' => $category->id]) }}">
+                {{ $category->nombre }}
+            </a>
+        </li>
     @endforeach
 </ul>

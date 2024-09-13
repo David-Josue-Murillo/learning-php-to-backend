@@ -63,4 +63,5 @@ Route::resource('/user', UserController::class);
 // RUtas de categorias
 Route::group(['prefix'=>'category'], function() {
     Route::get('index', [CategoryController::class, 'index']);
+    Route::get('index/{id}', [CategoryController::class, 'getCetegory'])->name('getCategory');
 });
