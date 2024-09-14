@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\AuthRegisterController;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Image;
 
@@ -27,3 +29,8 @@ Route::get('/', function () {
     */
     return view('welcome');
 });
+
+Route::get('/login', [AuthLoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthLoginController::class, 'login']);
+Route::get('/register', [AuthRegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthRegisterController::class, 'register']);
