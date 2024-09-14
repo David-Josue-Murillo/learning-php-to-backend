@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Image;
+//use App\Models\Image;
 
 Route::get('/', function () {
-    
+    /*
     $images = Image::all();
     foreach ($images as $image) {
         echo "<h2>Post</h2>";
@@ -24,6 +24,6 @@ Route::get('/', function () {
         echo "<hr />";
     }
     die();
-    
+    */
     return view('welcome');
 });
