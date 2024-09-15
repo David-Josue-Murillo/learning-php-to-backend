@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <h2>Register</h2>
+<div class="container w-50 mx-auto mt-5">
+    <h2 class="text-center mb-3">Register</h2>
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Nombre</label>
             <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Apellido</label>
+            <input type="text" name="surname" class="form-control" required>
         </div>
 
         <div class="form-group">
@@ -25,7 +29,6 @@
             <input type="password" name="password_confirmation" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Register</button>
     </form>
 </div>
-@endsection

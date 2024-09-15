@@ -34,3 +34,5 @@ Route::get('/login', [AuthLoginController::class, 'showLoginForm'])->name('login
 Route::post('/login', [AuthLoginController::class, 'login']);
 Route::get('/register', [AuthRegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthRegisterController::class, 'register']);
+
+Route::get('/app', [AuthLoginController::class, 'showApp'])->name('app');
