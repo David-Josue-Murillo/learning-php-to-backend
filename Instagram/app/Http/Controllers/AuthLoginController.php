@@ -21,14 +21,19 @@ class AuthLoginController extends Controller
 
         if($user && Hash::check($password, $user->password)){
             Auth::login($user);
-            return redirect()->route('app', ['user' => $user]);
+            return redirect()->route('home', ['user' => $user]);
         }
 
         return redirect()->route('login');
     }
 
     public function showApp(){
-        return view('app', ['user' => Auth::user()]);
+        return view('layouts.home', ['user' => Auth::user()]);
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 
 }

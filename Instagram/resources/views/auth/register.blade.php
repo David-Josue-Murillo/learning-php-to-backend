@@ -15,6 +15,11 @@
         </div>
 
         <div class="form-group">
+            <label for="nick">Nick</label>
+            <input type="text" name="nick" class="form-control" required>
+        </div>
+
+        <div class="form-group">
             <label for="email">Email</label>
             <input type="email" name="email" class="form-control" required>
         </div>
