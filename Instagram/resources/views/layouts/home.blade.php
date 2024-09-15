@@ -42,12 +42,19 @@
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            <i class="bi bi-box-arrow-right"></i> Salir
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
+
+                                        <a class="dropdown-item" href="">
+                                            <i class="bi bi-person-circle"></i> Perfil
+                                        </a>
+                                        <a class="dropdown-item" href="">
+                                            <i class="bi bi-gear"></i> Ajustes
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
