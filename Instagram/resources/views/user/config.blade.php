@@ -10,7 +10,7 @@
     @endif
 
     <h2 class="text-center mb-3">Configuración de mi cuenta</h2>
-    <form method="POST" action="{{ route('update') }}" aria-label="Update-Profile">
+    <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data" aria-label="Update-Profile">
         @csrf
         <div class="form-group">
             <label for="name">Nombre</label>
@@ -30,6 +30,11 @@
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Email</label>
+            <input type="file" name="image" class="form-control" >
         </div>
 
         <button type="submit" class="btn btn-primary mt-3 w-100">Guardar Cambios</button>

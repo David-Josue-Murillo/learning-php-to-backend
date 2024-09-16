@@ -28,6 +28,11 @@ class UserController extends Controller
         $user->nick = $request->input('nick');
         $user->email = $request->input('email');
 
+        // Subir imagen
+        $image = $request->file('image');
+        var_dump($image);
+        die();
+
         // Guardar los cambios en la base de datos
         $user->update();
 
