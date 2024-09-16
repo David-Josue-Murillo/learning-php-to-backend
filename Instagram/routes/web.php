@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\AuthRegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Image;
 
@@ -35,5 +36,5 @@ Route::post('/login', [AuthLoginController::class, 'login']);
 Route::get('/register', [AuthRegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::get('/logout', [AuthLoginController::class, 'logout'])->name('logout');
-
 Route::get('/home', [AuthLoginController::class, 'showApp'])->name('home');
+Route::get('/config', [UserController::class, 'config'])->name('config');

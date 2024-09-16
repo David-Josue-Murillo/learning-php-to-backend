@@ -52,7 +52,7 @@
                                         <a class="dropdown-item" href="">
                                             <i class="bi bi-person-circle"></i> Perfil
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('config') }}">
                                             <i class="bi bi-gear"></i> Ajustes
                                         </a>
                                     </li>
