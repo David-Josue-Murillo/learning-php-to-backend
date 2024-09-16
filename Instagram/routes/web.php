@@ -35,7 +35,11 @@ Route::get('/login', [AuthLoginController::class, 'showLoginForm'])->name('login
 Route::post('/login', [AuthLoginController::class, 'login']);
 Route::get('/register', [AuthRegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthRegisterController::class, 'register']);
-Route::get('/logout', [AuthLoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 Route::get('/home', [AuthLoginController::class, 'showApp'])->name('home');
-Route::get('/config', [UserController::class, 'config'])->name('config');
-Route::post('/update', [UserController::class, 'update'])->name('update');
+
+
+Route::group(['prefix' => 'user'], function() {
+    Route::get('/config', [UserController::class, 'config'])->name('config');
+    Route::post('/update', [UserController::class, 'update'])->name('update');
+});
