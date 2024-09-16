@@ -7,22 +7,22 @@
         @csrf
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" name="name" class="form-control" required>
+            <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" required>
         </div>
 
         <div class="form-group">
             <label for="surname">Apellido</label>
-            <input type="text" name="surname" class="form-control" required>
+            <input type="text" name="surname" class="form-control" value="{{ Auth::user()->username }}" required>
         </div>
 
         <div class="form-group">
             <label for="nick">Nick</label>
-            <input type="text" name="nick" class="form-control" required>
+            <input type="text" name="nick" class="form-control" value="{{ Auth::user()->nick }}" required>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary mt-3 w-100">Guardar Cambios</button>
