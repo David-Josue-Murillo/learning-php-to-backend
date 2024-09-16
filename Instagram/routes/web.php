@@ -38,3 +38,4 @@ Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::get('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 Route::get('/home', [AuthLoginController::class, 'showApp'])->name('home');
 Route::get('/config', [UserController::class, 'config'])->name('config');
+Route::get('/update', [UserController::class, 'update'])->name('update');
