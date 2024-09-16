@@ -29,9 +29,9 @@ class UserController extends Controller
         $user->email = $request->input('email');
 
         // Guardar los cambios en la base de datos
-        $user->save();
+        $user->update();
 
         // Redireccionar con un mensaje de éxito
-        return back()->with('status', 'Usuario actualizado correctamente');
+        return redirect()->route('config')->with(['message'=>'Usuario actualizado correctamente']);
     }
 }
