@@ -34,9 +34,7 @@
 
         <div class="form-group">
             <label for="avatar">Avatar</label>
-            @if(Auth::user()->image)
-                <img src="{{ route('avatar', Auth::user()->image) }}" alt="Avatar" class="rounded-circle">
-            @endif
+            @include('includes.avatar')
         </div>
         
         <div class="form-group">

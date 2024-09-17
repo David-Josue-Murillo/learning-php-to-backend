@@ -58,6 +58,11 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <div class="container__avatar">
+                                    @include('includes.avatar')
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
