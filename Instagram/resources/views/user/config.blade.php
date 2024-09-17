@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="image">Email</label>
-            <input type="file" name="image" class="form-control" >
+            <input type="file" name="image" class="form-control" accept="image/*">
         </div>
 
         <button type="submit" class="btn btn-primary mt-3 w-100">Guardar Cambios</button>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -30,8 +32,15 @@ class UserController extends Controller
 
         // Subir imagen
         $image = $request->file('image');
-        var_dump($image);
-        die();
+        if($image){
+            $image_path_name = time().'_'.$image->getClientOriginalName();
+            
+            // Guardar en la carpeta storage/app/users
+            $image->storeAs('users', $image_path_name, 'public');
+            
+            // Asignar la ruta de la imagen en la base de datos
+            $user->image = $image_path_name;
+        }
 
         // Guardar los cambios en la base de datos
         $user->update();
