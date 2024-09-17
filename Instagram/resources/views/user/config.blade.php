@@ -33,6 +33,10 @@
         </div>
 
         <div class="form-group">
+            @if(Auth::user()->image)
+                <img src="{{ route('avatar', Auth::user()->image) }}" alt="Avatar" class="rounded-circle">
+            @endif
+
             <label for="image">Email</label>
             <input type="file" name="image" class="form-control" accept="image/*">
         </div>

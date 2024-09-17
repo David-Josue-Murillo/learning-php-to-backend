@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -36,7 +36,7 @@ class UserController extends Controller
             $image_path_name = time().'_'.$image->getClientOriginalName();
             
             // Guardar en la carpeta storage/app/users
-            $image->storeAs('users', $image_path_name, 'public');
+            $image->storeAs('users', $image_path_name, 'users'); // Guardar en la carpeta storage/app/users
             
             // Asignar la ruta de la imagen en la base de datos
             $user->image = $image_path_name;
@@ -47,5 +47,12 @@ class UserController extends Controller
 
         // Redireccionar con un mensaje de éxito
         return redirect()->route('config')->with(['message'=>'Usuario actualizado correctamente']);
+    }
+
+    public function getImage($filename) {
+        $file = Storage::disk('users')->get($filename);
+        return new Response($file, 200);
+        
+        //return Storage::url('images/'.$filename);
     }
 }

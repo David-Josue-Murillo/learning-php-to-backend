@@ -42,4 +42,5 @@ Route::get('/home', [AuthLoginController::class, 'showApp'])->name('home');
 Route::group(['prefix' => 'user'], function() {
     Route::get('/config', [UserController::class, 'config'])->name('config');
     Route::post('/update', [UserController::class, 'update'])->name('update');
+    Route::get('/avatar/{filename}', [UserController::class, 'getImage'])->name('avatar');
 });
