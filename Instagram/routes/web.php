@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\AuthRegisterController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Image;
@@ -43,4 +44,9 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('/config', [UserController::class, 'config'])->name('config');
     Route::post('/update', [UserController::class, 'update'])->name('update');
     Route::get('/avatar/{filename}', [UserController::class, 'getImage'])->name('avatar');
+});
+
+
+Route::group(['prefix' => 'image'], function(){
+    Route::get('/create', [ImageController::class, 'create'])->name('create');
 });
