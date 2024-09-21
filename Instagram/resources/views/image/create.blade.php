@@ -8,13 +8,13 @@
                 <div class="card-header">Subir nueva imagen</div>
 
                 <div class="card-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{ Route('save') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row mb-2">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
                             <div class="col-md-7">
-                                <input type="text" name="image_path" id="image_path" class="form-control">
+                                <input type="file" name="image_path" id="image_path" class="form-control">
 
                                 @if (isset($erros))
                                     @if ($erros->has('image_path'))

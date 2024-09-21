@@ -49,4 +49,5 @@ Route::group(['prefix' => 'user'], function() {
 
 Route::group(['prefix' => 'image'], function(){
     Route::get('/create', [ImageController::class, 'create'])->name('create');
+    Route::post('/save', [ImageController::class, 'save'])->name('save');
 });

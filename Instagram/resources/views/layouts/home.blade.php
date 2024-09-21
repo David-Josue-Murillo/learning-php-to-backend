@@ -69,4 +69,9 @@
             </div>
         </nav>
     </div>
+
+    <div class="container">
+        @include('includes.message')
+    </div>
+
 </body>

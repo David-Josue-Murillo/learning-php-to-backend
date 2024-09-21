@@ -3,11 +3,7 @@
 @section('content')
 <div class="container w-50 mx-auto">
 
-    @if(session('message'))
-        <div class="alert alert-success text-center" role="alert">
-            {{ session('message') }}
-        </div>
-    @endif
+    @include('includes.message')
 
     <h2 class="text-center mb-3">Configuración de mi cuenta</h2>
     <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data" aria-label="Update-Profile">
