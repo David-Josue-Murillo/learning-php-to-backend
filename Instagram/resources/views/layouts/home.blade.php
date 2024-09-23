@@ -84,12 +84,15 @@
                                 <img src="{{ route('avatar', $image->user->image) }}" alt="Avatar" class="rounded-circle">
                             @endif
 
-                            <div class="data-user">{{ $image->user->name. ' '. $image->user->surname }}</div>
+                            <div class="data-user">
+                                {{ $image->user->name. ' '. $image->user->surname }}
+                                <span class="text-black-50">| {{ '@'.$image->user->nick }} </span>
+                            </div>
                         </div>
 
 
                         <div class="card-body">
-                            
+                            <img src="{{ route('avatar.image', $image->image_path) }}" alt="Avatar" class="rounded-circle">
                         </div>
                     </div>
                 @endforeach
