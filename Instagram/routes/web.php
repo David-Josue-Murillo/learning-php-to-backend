@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\AuthRegisterController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::post('/login', [AuthLoginController::class, 'login']);
 Route::get('/register', [AuthRegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
-Route::get('/home', [AuthLoginController::class, 'showApp'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::group(['prefix' => 'user'], function() {

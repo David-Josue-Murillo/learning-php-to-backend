@@ -71,7 +71,29 @@
     </div>
 
     <div class="container">
-        @include('includes.message')
-    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+            
+                @include('includes.message')
 
+                @foreach ($images as $image)
+                    <div class="card mb-3">
+                        <div class="card-header">
+
+                            @if ($image->user->image)
+                                <img src="{{ route('avatar', $image->user->image) }}" alt="Avatar" class="rounded-circle">
+                            @endif
+
+                            <div class="data-user">{{ $image->user->name. ' '. $image->user->surname }}</div>
+                        </div>
+
+
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </body>
