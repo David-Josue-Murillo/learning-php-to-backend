@@ -14,8 +14,12 @@ class TaskComponent extends Component {
     public $description;
     public $modal = false;
 
+    public function getTasks() {
+        return Task::where('user_id', Auth::user()->id)->get();
+    }
+
     public function mount() {
-        $this->tasks = Task::where('user_id', Auth::user()->id)->get();
+        $this->tasks = $this->getTasks();
     }
 
     public function render() {
@@ -50,6 +54,9 @@ class TaskComponent extends Component {
 
         // Guardar en la base de datos
         $newTask->save();
+
+        // Actualizar la lista de tareas
+        $this->tasks = $this->getTasks();
 
         //Cerrar el modal
         $this->closeCreateModal();
