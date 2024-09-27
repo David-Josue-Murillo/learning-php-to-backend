@@ -128,7 +128,7 @@
                                 </div>
                             </div>
 
-                            <button wire:click="deleteTask({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                            <button wire:click="deleteTask({{ $task }})" wire:confirm="Are you sure you want to delete this task?" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                 Eliminar
                             </button>
                         </div>
