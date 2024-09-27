@@ -61,5 +61,14 @@ class TaskComponent extends Component {
         //Cerrar el modal
         $this->closeCreateModal();
     }
+
+    public function updateTask(Task $task) {
+        $this->title = $task->title;
+        $this->description = $task->description;
+        $this->modal = true;
+        $task->save();
+
+        $this->tasks = $this->getTasks();
+    }
 }
 
