@@ -68,6 +68,10 @@ class TaskComponent extends Component {
         $this->description = $task->description;
         $this->modal = true;
     }
-
+    
+    public function deleteTask (Task $task) {
+        $task->delete();
+        $this->tasks = $this->getTasks();
+    }
 
 }
