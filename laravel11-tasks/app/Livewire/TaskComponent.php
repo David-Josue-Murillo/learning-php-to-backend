@@ -43,32 +43,31 @@ class TaskComponent extends Component {
         $this->modal = false;
     }
 
-    public function createTask() {
-        // Crear nueva tarea
-        $newTask = new Task();
+    public function createOrUpdateTask (Task $task = null) {
+        if ($task) {
+            $task->title = $this->title;
+            $task->description = $this->description;
+            $task->user_id = Auth::user()->id;
+            $task->save();
+        } else {
 
-        // Asignar valores al nuevo objeto
-        $newTask->title = $this->title;
-        $newTask->description = $this->description;
-        $newTask->user_id = Auth::user()->id; // Obtener el id del usuario actual
+            Task::updateOrCreate([
+                'title' => $this->title,
+                'description' => $this->description,
+                'user_id' => Auth::user()->id,
+            ]);
+        }
 
-        // Guardar en la base de datos
-        $newTask->save();
-
-        // Actualizar la lista de tareas
         $this->tasks = $this->getTasks();
-
-        //Cerrar el modal
-        $this->closeCreateModal();
+        $this->modal = false;
+        $this->clearFields();
     }
 
-    public function updateTask(Task $task) {
+    public function updateTask (Task $task) {
         $this->title = $task->title;
         $this->description = $task->description;
         $this->modal = true;
-        $task->save();
-
-        $this->tasks = $this->getTasks();
     }
-}
 
+
+}

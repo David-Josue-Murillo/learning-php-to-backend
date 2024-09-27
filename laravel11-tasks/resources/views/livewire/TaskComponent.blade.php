@@ -48,7 +48,7 @@
                                     Cancelar
                                 </button>
 
-                                <button wire:click="createTask" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+                                <button wire:click="createOrUpdateTask" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
                                     Crear Tarea
                                 </button>
                             </div>
@@ -96,7 +96,7 @@
                                         <div class="relative inline-block p-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl sm:max-w-sm rounded-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:p-6">
                                             <div class="mt-5 text-center">
                                                 <h3 class="text-lg font-medium text-gray-800 dark:text-white" id="modal-title">
-                                                    Crear nueva tarea
+                                                    Editar tarea
                                                 </h3>
                                             </div>
 
@@ -119,8 +119,8 @@
                                                     Cancelar
                                                 </button>
 
-                                                <button wire:click="createTask" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-                                                    Crear Tarea
+                                                <button wire:click="createOrUpdateTask({{ $task }})" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+                                                    Modificar Tarea
                                                 </button>
                                             </div>
                                         </div>
