@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Task;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class TaskComponent extends Component {
 
@@ -15,7 +14,10 @@ class TaskComponent extends Component {
     public $modal = false;
 
     public function getTasks() {
-        return Task::where('user_id', Auth::user()->id)->get();
+        $user = auth()->user();
+        $myTasks = Task::where('user_id', Auth::user()->id)->get();
+        $mySharedTasks = $user->sharedTasks()->get();
+        return $mySharedTasks->merge($myTasks);
     }
 
     public function mount() {
