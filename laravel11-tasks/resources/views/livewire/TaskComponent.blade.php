@@ -1,4 +1,4 @@
-<div>
+<section wire:poll="renderAllTasks">
     <div class=" text-center">
         <h1 class="px-6 pt-2 text-3xl text-purple-800 font-extrabold">Bienvenido al gestor de tareas</h1>
         <p class="px-6 text-gray-600">Aquí podrás ver y gestionar tus tareas</p>
@@ -77,7 +77,7 @@
                     <td class="py-3 px-4">
                         <div class="flex gap-x-2">
                             <div x-data="{ isOpen: false }" class="relative flex justify-center">
-                                <button @click="isOpen = true" wire:click="updateTask({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                                <button @click="isOpen = true" wire:click="openCreateModal({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                     Editar
                                 </button>
 
@@ -119,7 +119,7 @@
                                                     Cancelar
                                                 </button>
 
-                                                <button wire:click="createOrUpdateTask({{ $task }})" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+                                                <button wire:click="createOrUpdateTask" class="px-4 sm:mx-2 w-full py-2.5 mt-3 sm:mt-0 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-md hover:bg-purple-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40">
                                                     Modificar Tarea
                                                 </button>
                                             </div>
@@ -139,4 +139,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>
