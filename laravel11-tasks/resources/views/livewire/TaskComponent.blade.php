@@ -76,9 +76,14 @@
                     <td class="py-3 px-4 font-medium">{{ $task->description }}</td>
                     <td class="py-3 px-4">
                         <div class="flex justify-center">
-                            <div x-data="{ isOpen: false }" class="relative flex justify-center gap-x-2.5">
-                                @if((isset($task) && $task->permission == 'edit') || (auth()->user()->id == $task->user_id))
-                                
+
+                            @if (isset($task->pivot))
+                                <button class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-700 rounded-lg hover:bg-orange-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
+                                    Descompartir
+                                </button>
+                            @endif
+                            @if((isset($task->pivot) && $task->pivot->permission == 'edit') || (auth()->user()->id == $task->user_id))
+                                <div x-data="{ isOpen: false }" class="relative flex justify-center gap-x-2.5">
                                     <button @click="isOpen = true" wire:click="openCreateModal({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                         Editar
                                     </button>
@@ -129,6 +134,7 @@
                                         </div>
                                     </div>
                                     
+
                                     <button wire:click="openShareModal({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-700 rounded-lg hover:bg-orange-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
                                         Compartir
                                     </button>
@@ -182,9 +188,8 @@
                                     <button wire:click="deleteTask({{ $task }})" wire:confirm="Are you sure you want to delete this task?" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                         Eliminar
                                     </button>
-                                    
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
                     </td>
                 </tr>

@@ -106,9 +106,19 @@ class TaskComponent extends Component {
 
     public function openShareModal(Task $task) {
         $this->modalShare = true;
+        $this->myTask = $task;
     }
 
     public function closeShareModal() {
         $this->modalShare = false;
+    }
+
+    public function shareTask() {
+        $task = Task::find($this->myTask->id);
+        $user = User::find($this->user_id);
+        $user->sharedTasks()->attach($task->id, ['permission' => $this->permission]);
+        
+        $this->closeShareModal();
+        $this->tasks = $this->getTasks()->sortByDesc('id');
     }
 }
