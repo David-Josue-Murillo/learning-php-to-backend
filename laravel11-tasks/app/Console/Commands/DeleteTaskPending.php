@@ -26,6 +26,9 @@ class DeleteTaskPending extends Command
      */
     public function handle()
     {
-        Task::where('deleted_at', '!=', null)->forceDelete();
+        // Elimina las tareas que el deleted_at es mayor a 5 dias
+        Task::where('deleted_at', '!=', null)
+        ->where('deleted_at', '<', now()->subDays(5))
+        ->forceDelete();
     }
 }

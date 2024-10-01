@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Task;
 use Illuminate\Console\Command;
+use function Laravel\Prompts\select;
 
 class ToolCommand extends Command
 {
@@ -11,14 +13,14 @@ class ToolCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:tool-command';
+    protected $signature = 'app:tool';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Herramientas para el gestor de tareas';
 
     /**
      * Execute the console command.
@@ -26,5 +28,10 @@ class ToolCommand extends Command
     public function handle()
     {
         //
+        $role = select(
+            label: 'Selecciona una tarea',
+            options: Task::all()->pluck('title', 'id'),
+            scroll: 10,
+        );
     }
 }
