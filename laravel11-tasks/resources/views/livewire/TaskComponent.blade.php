@@ -129,48 +129,55 @@
                                         </div>
                                     </div>
                                     
-                                    <button wire:click="" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-700 rounded-lg hover:bg-orange-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
+                                    <button wire:click="openShareModal({{ $task }})" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-700 rounded-lg hover:bg-orange-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
                                         Compartir
                                     </button>
 
                                     <!-- Modal para compartir la tarea -->
-                                    <div class="fixed left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50 py-10">
-                                        <div class="max-h-full w-full max-w-xl overflow-y-auto sm:rounded-2xl bg-white">
-                                            <div class="w-full">
-                                                <div class="m-8 my-20 max-w-[400px] mx-auto">
-                                                    <div class="mb-8">
-                                                        <h1 class="text-3xl font-extrabold mb-4 text-center">Compartir tarea</h1>
-                                                        
-                                                        <form>
-                                                            <div class="mb-4">
-                                                                <label for="title" class="block text-sm font-medium text-gray-700">Usuario a compartir</label>
-                                                                <select wire:model="user_id" name="user" id="user" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                                    <option selected>Seleccione un usuario</option>
-                                                                    @foreach($users as $user)
-                                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+                                    @if ($modalShare)
+                                        <div class="fixed left-0 top-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50 py-10">
+                                            <div class="max-h-full w-full max-w-xl overflow-y-auto sm:rounded-2xl bg-white">
+                                                <div class="w-full">
+                                                    <div class="m-8 my-20 max-w-[400px] mx-auto">
+                                                        <div class="mb-8">
+                                                            <h1 class="text-3xl font-extrabold mb-4 text-center">Compartir tarea</h1>
                                                             
-                                                            <div class="mb-4">
-                                                                <label for="description" class="block text-sm font-medium text-gray-700">Permisos para compartir</label>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                                            <form>
+                                                                <div class="mb-4">
+                                                                    <label for="title" class="block text-sm font-medium text-gray-700">Usuario a compartir</label>
+                                                                    <select wire:model="user_id" name="user" id="user" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                                                        <option selected>Seleccione un usuario</option>
+                                                                        @foreach($users as $user)
+                                                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="mb-4">
+                                                                    <label for="description" class="block text-sm font-medium text-gray-700">Permisos para compartir</label>
+                                                                    <select wire:model="permission" name="permission" id="permission" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                                                        <option selected>Seleccione un permiso</option>
+                                                                        <option value="view">Ver</option>
+                                                                        <option value="edit">Editar</option>
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
 
-                                                    <div class="flex flex-row justify-center gap-x-6">
-                                                        <button class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                                                            Compartir
-                                                        </button>
-                                                        
-                                                        <button wire:click.prevent="closeCreateModal" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                                                            Cancelar
-                                                        </button>
+                                                        <div class="flex flex-row justify-center gap-x-6">
+                                                            <button wire:click="shareTask" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-purple-700 rounded-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                                                                Compartir tarea
+                                                            </button>
+                                                            
+                                                            <button wire:click.prevent="closeShareModal" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                                                                Cancelar
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
 
                                     <button wire:click="deleteTask({{ $task }})" wire:confirm="Are you sure you want to delete this task?" class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                         Eliminar

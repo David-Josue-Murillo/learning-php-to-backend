@@ -17,6 +17,8 @@ class TaskComponent extends Component {
     public $modal = false;
     public $users = [];
     public $user_id;
+    public $permission;
+    public $modalShare = false;
     public $isUpdating = false;
     
     public function mount() {
@@ -87,6 +89,7 @@ class TaskComponent extends Component {
 
         $this->clearFields();
         $this->modal = false;
+        $this->modalShare = false;
         $this->tasks = $this->getTasks()->sortByDesc('id');
     }
 
@@ -101,4 +104,11 @@ class TaskComponent extends Component {
         $this->tasks = $this->getTasks();
     }
 
+    public function openShareModal(Task $task) {
+        $this->modalShare = true;
+    }
+
+    public function closeShareModal() {
+        $this->modalShare = false;
+    }
 }
