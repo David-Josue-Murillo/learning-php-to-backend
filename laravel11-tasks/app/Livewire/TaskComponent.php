@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Jobs\RemoveAllTasks;
 use App\Models\Task;
 use App\Models\User;
 use Livewire\Component;
@@ -133,5 +134,11 @@ class TaskComponent extends Component {
         
         $this->closeShareModal();
         $this->tasks = $this->getTasks()->sortByDesc('id');
+    }
+
+    public function removeAllTasks() {
+        $user = User::find(auth()->user()->id);  // Busca el usuario que esta logueado
+        RemoveAllTasks::dispatch($user); // Envia un job para eliminar todas las tareas del usuario
+        $this->tasks = $this->getTasks()->sortByDesc('id'); // Actualiza las tareas
     }
 }
