@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Task;
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,10 +15,13 @@ class TaskComponent extends Component {
     public $id;
     public $myTask = null;
     public $modal = false;
+    public $users = [];
+    public $user_id;
     public $isUpdating = false;
     
     public function mount() {
         $this->tasks = $this->getTasks()->sortByDesc('id');
+        $this->users = User::where('id', '!=', auth()->user()->id)->get();   
     }
 
     public function renderAllTasks() {
