@@ -10,6 +10,10 @@
                     Crear nueva tarea
                 </button>
 
+                <button wire:click="removeAllTasks" wire:confirm="Are you sure you want to delete all tasks?" class="mx-6 my-3 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-700 rounded-lg hover:bg-red-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                    Borrar todas las tareas
+                </button>
+
                 <div x-show="isOpen"
                     x-transition:enter="transition duration-300 ease-out"
                     x-transition:enter-start="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
