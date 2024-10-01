@@ -5,7 +5,9 @@ namespace App\Livewire;
 use App\Models\Task;
 use App\Models\User;
 use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
+use App\Mail\SharedTask;
+use Illuminate\Support\Facades\Mail;
+use \Illuminate\Support\Facades\Auth;
 
 class TaskComponent extends Component {
 
@@ -117,9 +119,12 @@ class TaskComponent extends Component {
         $task = Task::find($this->myTask->id);
         $user = User::find($this->user_id);
         $user->sharedTasks()->attach($task->id, ['permission' => $this->permission]);
-        
+
         $this->closeShareModal();
         $this->tasks = $this->getTasks()->sortByDesc('id');
+        
+        $userOrigin = User::find(auth()->user()->id);
+        Mail::to($user->email)->send(new SharedTask($task, $userOrigin));
     }
 
     public function taskUnshared(Task $task) {
