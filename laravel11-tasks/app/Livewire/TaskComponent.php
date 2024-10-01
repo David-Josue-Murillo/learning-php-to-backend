@@ -24,15 +24,18 @@ class TaskComponent extends Component {
     public $modalShare = false;
     public $isUpdating = false;
     
+    // Método para montar la vista
     public function mount() {
         $this->tasks = $this->getTasks()->sortByDesc('id');
         $this->users = User::where('id', '!=', auth()->user()->id)->get();   
     }
 
+    // Método para renderizar las tareas del usuario
     public function renderAllTasks() {
         $this->tasks = $this->getTasks()->sortByDesc('id');
     }
 
+    // Método para obtener las tareas del usuario
     public function getTasks() {
         $user = auth()->user();
         $myTasks = Task::where('user_id', auth()->user()->id)->get();
@@ -40,11 +43,12 @@ class TaskComponent extends Component {
         return $mySharedTasks->merge($myTasks);
     }
 
-
+    // Método para renderizar la vista
     public function render() {
         return view('livewire.TaskComponent');
     }
 
+    // Método para limpiar los campos de la ventana de crear o actualizar una tarea
     private function clearFields() {
         $this->title = '';
         $this->description = '';
@@ -53,7 +57,7 @@ class TaskComponent extends Component {
         $this->isUpdating = false;
     }
 
-    
+    // Método para abrir la ventana de crear o actualizar una tarea
     public function openCreateModal(Task $task = null) {
         $this->isUpdating = false;
 
@@ -70,10 +74,13 @@ class TaskComponent extends Component {
     }
     
 
+    // Método para cerrar la ventana de crear o actualizar una tarea
     public function closeCreateModal() {
         $this->clearFields();
         $this->modal = false;
     }
+
+    // Método para crear o actualizar una tarea
 
     public function createOrUpdateTask () {
         if ($this->myTask->id) {
@@ -96,26 +103,31 @@ class TaskComponent extends Component {
         $this->tasks = $this->getTasks()->sortByDesc('id');
     }
 
+    // Método para actualizar una tarea
     public function updateTask (Task $task) {
         $this->title = $task->title;
         $this->description = $task->description;
         $this->modal = true;
     }
     
+    // Método para eliminar una tarea
     public function deleteTask (Task $task) {
         $task->delete();
         $this->tasks = $this->getTasks();
     }
 
+    // Método para abrir la ventana de compartir
     public function openShareModal(Task $task) {
         $this->modalShare = true;
         $this->myTask = $task;
     }
 
+    // Método para cerrar la ventana de compartir
     public function closeShareModal() {
         $this->modalShare = false;
     }
 
+    // Método para compartir una tarea
     public function shareTask() {
         $task = Task::find($this->myTask->id);
         $user = User::find($this->user_id);
@@ -128,6 +140,7 @@ class TaskComponent extends Component {
         Mail::to($user->email)->queue(new SharedTask($task, $userOrigin));
     }
 
+    // Método para descompartir una tarea compartida
     public function taskUnshared(Task $task) {
         $user = User::find(auth()->user()->id);  // Busca el usuario que esta logueado
         $user->sharedTasks()->detach($task->id); //Busca las taeras compartidas del usuario y las elimina
@@ -136,6 +149,7 @@ class TaskComponent extends Component {
         $this->tasks = $this->getTasks()->sortByDesc('id');
     }
 
+    // Método para eliminar todas las tareas del usuario
     public function removeAllTasks() {
         $user = User::find(auth()->user()->id);  // Busca el usuario que esta logueado
         RemoveAllTasks::dispatch($user); // Envia un job para eliminar todas las tareas del usuario
