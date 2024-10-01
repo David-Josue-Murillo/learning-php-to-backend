@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Compartiendo Tareas</h1>
-    <p>Hola {{ $user->name }}, te has compartido una tarea con el usuario {{ $task->user->name }}.</p>
+    <p>Este es una tarea compartida</p>
+    <p><span class="font-bold">Titulo:</span> {{ $task->title }}</p>
+    <p><span class="font-bold">Descripción:</span> {{ $task->description }}</p>
+    <p><span class="font-bold">Usuario:</span> {{ $task->user->name }} | {{ $task->user->email }}</p>
 </body>
 </html>

@@ -124,7 +124,7 @@ class TaskComponent extends Component {
         $this->tasks = $this->getTasks()->sortByDesc('id');
         
         $userOrigin = User::find(auth()->user()->id);
-        Mail::to($user->email)->send(new SharedTask($task, $userOrigin));
+        Mail::to($user->email)->queue(new SharedTask($task, $userOrigin));
     }
 
     public function taskUnshared(Task $task) {
