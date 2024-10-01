@@ -121,4 +121,12 @@ class TaskComponent extends Component {
         $this->closeShareModal();
         $this->tasks = $this->getTasks()->sortByDesc('id');
     }
+
+    public function taskUnshared(Task $task) {
+        $user = User::find(auth()->user()->id);  // Busca el usuario que esta logueado
+        $user->sharedTasks()->detach($task->id); //Busca las taeras compartidas del usuario y las elimina
+        
+        $this->closeShareModal();
+        $this->tasks = $this->getTasks()->sortByDesc('id');
+    }
 }

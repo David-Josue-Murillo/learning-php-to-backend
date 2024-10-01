@@ -78,8 +78,8 @@
                         <div class="flex justify-center">
 
                             @if (isset($task->pivot))
-                                <button class="px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-yellow-700 rounded-lg hover:bg-orange-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
-                                    Descompartir
+                                <button wire:click="taskUnshared({{ $task }})" class="mx-3 px-3 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-sky-700 rounded-lg hover:bg-sky-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" type="button">
+                                    Desc
                                 </button>
                             @endif
                             @if((isset($task->pivot) && $task->pivot->permission == 'edit') || (auth()->user()->id == $task->user_id))
