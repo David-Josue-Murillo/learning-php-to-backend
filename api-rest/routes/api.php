@@ -14,10 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// CREATE
+Route::post('user/{name}', function($name){
+    return "Hola $name, como estas?";
+
+});  
+
+// READ
 Route::get('/user', function() {
     return "Hola mundo";
 });
 
-Route::post('user/{name}', function($name){
-    return "Hola $name, como estas?";
+// UPDATE
+Route::put('user/{name}', function($name){
+    return "Hola $name, como estas?, quieres actualizar tu perfil?";
+});
+
+ // DELETE
+Route::delete('user/{name}', function($name){
+    return "Hola $name, como estas?, quieres borrar tu perfil?";
 });
