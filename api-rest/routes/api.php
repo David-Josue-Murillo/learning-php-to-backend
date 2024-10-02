@@ -34,3 +34,14 @@ Route::put('user/{name}', function($name){
 Route::delete('user/{name}', function($name){
     return "Hola $name, como estas?, quieres borrar tu perfil?";
 });
+
+Route::get('user/{min}/{max}', function($min, $max){
+    if(!is_numeric($min) || !is_numeric($max)){
+        return response()->json(['error' => 'El parametro min y max deben ser numéricos'], 400);
+    }
+
+    $numero_random = rand($min, $max);
+    $array = ['numero' => $numero_random];
+
+    return response($array, 200);
+});
