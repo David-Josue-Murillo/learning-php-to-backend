@@ -23,7 +23,7 @@ class AuthAdmin
             if(Auth::user()->utype == 'ADM'){
                 return $next($request);
             } 
-            Session::flush();
+            Session::flush(); // Elimina todas las sessiones
             return redirect()->route('login');
         }
         
