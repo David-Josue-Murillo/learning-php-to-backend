@@ -21,9 +21,9 @@ Route::middleware(['auth', AuthAdmin::class])->group(function(){
 
 
 // Rutas predeterminadas
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/login', function () {
+    return view('auth.login');
+})->middleware(['auth', 'verified'])->name('login');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
