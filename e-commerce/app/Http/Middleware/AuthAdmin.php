@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthAdmin
@@ -15,6 +17,17 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        // Verificamos que halla un usuario autenticado
+        if(Auth::user()){
+            //Verificamos que el usuario sea de tipo admin
+            if(Auth::user()->utype == 'ADM'){
+                return $next($request);
+            } 
+            Session::flush();
+            return redirect()->route('login');
+        }
+        
+        return redirect()->route('login');
     }
 }
+ 
