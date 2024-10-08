@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -5,6 +7,7 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <h1 class="text-white text-center mt-2 text-2xl font-bold">Iniciar Sessión</h1>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -39,9 +42,10 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
+            <x-primary-button class="ms-3 bg-black text-white">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
 </x-guest-layout>
+@endsection
