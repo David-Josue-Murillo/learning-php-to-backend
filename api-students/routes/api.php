@@ -1,14 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/students', function(){
-    return response()->json([
-        'message' => 'Listado de estudiantes',
-        'status' => 200 
-    ]);
-});
+Route::get('/students', [StudentController::class, 'index']);
 
 
 Route::get('/student/{id}', function(){
