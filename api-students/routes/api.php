@@ -14,12 +14,4 @@ Route::put('/student/{id}', [StudentController::class, 'update']);
 
 Route::patch('/student/{id}', [StudentController::class, 'updatePatch']);
 
-
-
-
-Route::delete('/student/{id}', function(){
-    return response()->json([
-        'message' => 'Eliminando estudiante',
-        'status' => 200 
-    ]);
-});
+Route::delete('/student/{id}', [StudentController::class,'destroy']);
