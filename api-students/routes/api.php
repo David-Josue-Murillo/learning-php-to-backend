@@ -8,15 +8,10 @@ Route::get('/students', [StudentController::class, 'index']);
 
 Route::post('/student', [StudentController::class, 'store']);
 
+Route::get('/student/{id}', [StudentController::class, 'show']);
 
 Route::put('/student/{id}', [StudentController::class, 'update']);
 
-Route::get('/student/{id}', function(){
-    return response()->json([
-        'message' => 'Modificando todos los datos del estudiante',
-        'status' => 200 
-    ]);
-});
 
 
 Route::patch('/student/{id}', function(){
