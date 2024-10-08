@@ -6,19 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/students', [StudentController::class, 'index']);
 
-
-Route::get('/student/{id}', function(){
-    return response()->json([
-        'message' => 'Estudiante 1',
-        'status' => 200 
-    ]);
-});
-
-
 Route::post('/student', [StudentController::class, 'store']);
 
 
-Route::put('/student/{id}', function(){
+Route::put('/student/{id}', [StudentController::class, 'update']);
+
+Route::get('/student/{id}', function(){
     return response()->json([
         'message' => 'Modificando todos los datos del estudiante',
         'status' => 200 
