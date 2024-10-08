@@ -30,5 +30,45 @@ class StudentController extends Controller
         return response()->json($data, 200);
     }
 
-    
+    public function store(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:student',
+            'phone' => 'required|digits:8',
+            'language' => 'required|in:English,Spanish,French'
+        ]);
+
+        if($validator->fails()){
+            $data = [
+                'message' => 'Error en la validadción de los datos',
+                'errors' => $validator->errors(),
+                'status' => 400
+            ];
+
+            return response()->json($data, 400);
+        }
+
+        $student = Student::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'language' => $request->language
+        ]);
+
+        if(!$student){
+            $data = [
+                'message' => 'Error al crear el estudiante',
+                'status' => 400
+            ];
+
+            return response()->json($data, 400);
+        }
+
+        $data = [
+            'student' => $student,
+            'status' => 201
+        ];
+
+        return response()->json($data, 201);
+    }
 }

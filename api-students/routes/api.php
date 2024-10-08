@@ -15,12 +15,7 @@ Route::get('/student/{id}', function(){
 });
 
 
-Route::post('/student', function(){
-    return response()->json([
-        'message' => 'Creando estudiante',
-        'status' => 200 
-    ]);
-});
+Route::post('/student', [StudentController::class, 'store']);
 
 
 Route::put('/student/{id}', function(){
