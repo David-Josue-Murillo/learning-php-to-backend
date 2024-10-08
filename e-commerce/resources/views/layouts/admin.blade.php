@@ -38,7 +38,7 @@
     
                     <div class="section-menu-left">
                         <div class="box-logo">
-                            <a href="index.html" id="site-logo-inner">
+                            <a href="{{ route('home.index') }}" id="site-logo-inner">
                                 <img class="" id="logo_header" alt="" src="{{ asset('images/logo/logo.png') }}"
                                     data-light="images/logo/logo.png" data-dark="images/logo/logo.png">
                             </a>
@@ -161,9 +161,9 @@
                                     </li>
 
                                     <li class="menu-item">
-                                        <form action="{{ route('logout') }}" method="post" id="logout-form">
+                                        <form action="{{ route('profile.destroy') }}" method="post" id="logout-form">
                                             @csrf
-                                            <a href="{{ route('logout') }}" class="" onclick="event.preventDeafult(); documennt.getElementById('logout-form').submit();">
+                                            <a href="{{ route('profile.destroy') }}" class="" onclick="event.preventDeafult(); documennt.getElementById('logout-form').submit();">
                                                 <div class="icon"><i class="icon-settings"></i></div>
                                                 <div class="text">Logout</div>
                                             </a>
@@ -406,7 +406,7 @@
                                             <ul class="dropdown-menu dropdown-menu-end has-content"
                                                 aria-labelledby="dropdownMenuButton3">
                                                 <li>
-                                                    <a href="#" class="user-item">
+                                                    <a href="{{ route('user.index') }}" class="user-item">
                                                         <div class="icon">
                                                             <i class="icon-user"></i>
                                                         </div>
@@ -439,7 +439,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.index') }} }}" class="user-item">
+                                                    <a href="" class="user-item">
                                                         <div class="icon">
                                                             <i class="icon-log-out"></i>
                                                         </div>
