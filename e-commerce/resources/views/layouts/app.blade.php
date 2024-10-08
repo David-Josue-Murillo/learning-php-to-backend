@@ -382,7 +382,6 @@
           </nav>
         </div>
       
-      
         <header id="header" class="header header-fullwidth header-transparent-bg">
           <div class="container">
             <div class="header-desk header-desk_type_1">
@@ -496,7 +495,7 @@
               </div>
             </div>
           </div>
-        </header>
+      </header>
 
         @yield('content')
       
