@@ -12,14 +12,9 @@ Route::get('/student/{id}', [StudentController::class, 'show']);
 
 Route::put('/student/{id}', [StudentController::class, 'update']);
 
+Route::patch('/student/{id}', [StudentController::class, 'updatePatch']);
 
 
-Route::patch('/student/{id}', function(){
-    return response()->json([
-        'message' => 'Modificando un dato del estudiante',
-        'status' => 200 
-    ]);
-});
 
 
 Route::delete('/student/{id}', function(){
