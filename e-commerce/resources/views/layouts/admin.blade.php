@@ -161,9 +161,9 @@
                                     </li>
 
                                     <li class="menu-item">
-                                        <form action="{{ route('profile.destroy') }}" method="post" id="logout-form">
+                                        <form action="{{ route('logout') }}" method="post" id="logout-form">
                                             @csrf
-                                            <a href="{{ route('profile.destroy') }}" class="" onclick="event.preventDeafult(); documennt.getElementById('logout-form').submit();">
+                                            <a class="cursor-pointer" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 <div class="icon"><i class="icon-settings"></i></div>
                                                 <div class="text">Logout</div>
                                             </a>
