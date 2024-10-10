@@ -16,7 +16,7 @@ class AdminController extends Controller
         return view('admin.brands', compact('brands'));
     }
 
-    public function addBrand(Request $request){
+    public function addBrand(){
         return view('admin.brand-add');
     }
 }
