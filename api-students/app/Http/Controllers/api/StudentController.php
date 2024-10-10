@@ -9,7 +9,11 @@ use Validator;
 
 class StudentController extends Controller
 {
-    //
+    /** 
+    * Esta funcion retorna todos
+    * los registros de la tabla 
+    * estudiantes en la db
+    **/
     public function index(){
         $students = Student::all();
 
