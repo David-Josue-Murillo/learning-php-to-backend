@@ -2,13 +2,13 @@
 
 class Categoria extends Database{
     //Conexion
-    protected $conexion = parent::connect();
-
+    
     public function getCategorias(){
+        $conexion = parent::connect();
         $sql = "SELECT * FROM categoria";
-        $stmt = $this->conexion->prepare($sql);
+        $stmt = $conexion->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetch();
+        $result = $stmt->fetchAll();
         return $result;
     }
 }
