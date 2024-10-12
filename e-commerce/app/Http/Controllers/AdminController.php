@@ -6,6 +6,7 @@ use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -37,10 +38,21 @@ class AdminController extends Controller
         // Manejo de la imagen
         $image = $request->file('image');
         $file_extension = $request->file('image')->extension();
-        $file_name = Carbon::now()->timestamp().'.'.$file_extension;
+        $file_name = Carbon::now()->timestamp.'.'.$file_extension;
+        $this->GenerateBrandThumbailsImage($image, $file_name);
         
         $brand->image = $file_name;
         $brand->save(); 
         return redirect()->route('admin.brands')->with('status', 'Brand has been added succefully.');
     }
+
+    public function GenerateBrandThumbailsImage($image, $imageName){
+        $destinantion_path = public_path('uploads/brands');
+        $img = Image::read($image->path);
+        $img->cover(124,124,"top");
+        $img->resize(124,124, function($contraint){
+            $contraint->aspectRatio();
+        })->save($destinantion_path.'/'.$imageName);
+    }
+
 }
