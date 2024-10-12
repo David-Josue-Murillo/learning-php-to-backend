@@ -11,18 +11,15 @@ class Database{
        $this->conn = null;
 
        try{
-            $dsn = "mysql:host:". $this->host .";dbname=". $this->db_name; //cadena de conexión (data source name)
+            $dsn = "mysql:host=". $this->host .";dbname=". $this->db_name. ";charset=utf8"; //cadena de conexión (data source name)
             $this->conn = new PDO($dsn, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configurar atributos de PDO
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); // Modo de recuperación de datos
        } catch (PDOException $e){
-            echo "Error de conexion: ". $e->getMessage();
+            error_log("Error de conexión: " . $e->getMessage()); // Registra el error en los logs
+            echo "No se pudo establecer la conexión con la base de datos.";
        }
 
        return $this->conn;
-    }
-
-    public function st_name() {
-        return $this->conn->query("SET NAMES utf8");
     }
 }
