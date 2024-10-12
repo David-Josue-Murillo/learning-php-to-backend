@@ -26,14 +26,14 @@ class AdminController extends Controller
     public function brand_store(Request $request){
         $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique|:brands,slug',
+            'slug' => 'required|unique:brands,slug',
             'image' => 'mimes:png,jpg,jpeg|max:2048'
         ]);
 
         // Aeginación de valores
         $brand = new Brand();
         $brand->name = $request->name;
-        $brand->slug = Str::slug($request->slug);
+        $brand->slug = Str::slug($request->name);
 
         // Manejo de la imagen
         $image = $request->file('image');
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function GenerateBrandThumbailsImage($image, $imageName){
         $destinantion_path = public_path('uploads/brands');
-        $img = Image::read($image->path);
+        $img = Image::read($image->path());
         $img->cover(124,124,"top");
         $img->resize(124,124, function($contraint){
             $contraint->aspectRatio();

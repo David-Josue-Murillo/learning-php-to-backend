@@ -75,3 +75,29 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(function() {
+            $('#myFile').on('change', function(e) {
+                const photo = $('#myFile');
+                const [file] = this.files;
+
+                if(file){
+                    $('#imgpreview img').attr('src', URL.createObjectURL(file));
+                    $('#imgpreview').show();
+                }
+            });
+
+            $('input[name='name']').on('change', function(e) {
+                $('input[name='slug']').val(stringToSlug($(this).val()));
+            });
+        });
+
+        function stringToSlug(Text) {
+            return Text.toLowerCase()
+            .replace(/[^\w ]+/g, '')
+            .replace(/ +/g, '-');
+        } 
+    </script>
+@endpush
