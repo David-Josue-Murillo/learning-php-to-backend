@@ -29,16 +29,18 @@ class AdminController extends Controller
             'image' => 'mimes:png,jpg,jpeg|max:2048'
         ]);
 
+        // Aeginación de valores
         $brand = new Brand();
         $brand->name = $request->name;
         $brand->slug = Str::slug($request->slug);
 
+        // Manejo de la imagen
         $image = $request->file('image');
         $file_extension = $request->file('image')->extension();
         $file_name = Carbon::now()->timestamp().'.'.$file_extension;
         
         $brand->image = $file_name;
-        $brand->save();
+        $brand->save(); 
         return redirect()->route('admin.brands')->with('status', 'Brand has been added succefully.');
     }
 }
