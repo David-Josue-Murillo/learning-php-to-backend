@@ -37,6 +37,11 @@
             </div>
             <div class="wg-table table-all-user">
                 <div class="table-responsive">
+
+                    @if(Session::has('status'))
+                        <div class="alert alert-success text-center">{{ Session::get('status') }}</div>
+                    @endif
+
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
