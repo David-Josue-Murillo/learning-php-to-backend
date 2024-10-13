@@ -11,4 +11,14 @@ class Categoria extends Database{
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    public function getCategoriasPorId($categoria_id){
+        $conexion = parent::connect();
+        $sql = "SELECT * FROM categoria WHERE id = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindValue(1, $categoria_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

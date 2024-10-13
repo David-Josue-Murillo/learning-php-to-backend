@@ -10,4 +10,9 @@ switch($_GET['op']){
         $data = $categoria->getCategorias();
         echo json_encode($data);
     break;
+
+    case 'GetId':
+        $data = $categoria->getCategoriasPorId();
+        echo json_encode($data);
+    break;
 }
