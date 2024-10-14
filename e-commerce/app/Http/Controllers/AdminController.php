@@ -46,6 +46,11 @@ class AdminController extends Controller
         return redirect()->route('admin.brands')->with('status', 'Brand has been added succefully.');
     }
 
+    public function brand_edit($id) {
+        $brand = Brand::find($id);
+        return view('admin.brand-edit', compact('brand'));
+    }
+
     public function GenerateBrandThumbailsImage($image, $imageName){
         $destinantion_path = public_path('uploads/brands');
         $img = Image::read($image->path());
