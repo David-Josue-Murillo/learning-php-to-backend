@@ -14,5 +14,9 @@ switch($_GET['op']){
     case 'GetId':
         $data = $categoria->getCategoriasPorId();
         echo json_encode($data);
+
+    case 'insert':
+        $data = $categoria->insertCategorias($body['cat_nombre'], $body['cat_obs']);
+        echo json_encode('Insertado correctamente');
     break;
 }

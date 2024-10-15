@@ -21,4 +21,14 @@ class Categoria extends Database{
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    public function insertCategorias($cat_nombre, $cat_obs){
+        $conexion = parent::connect();
+        $sql = "INSERT INTO categoria(id, cat_nombre, observaciones, estado) VALUES (NULL, ?, ?, 1)";
+        $sql = $conexion->prepare($sql);
+        $sql->bindValue(1, $cat_nombre);
+        $sql->bindValue(2, $cat_obs);
+        $result = $sql->fetchAll();        
+        return $result;
+    }
 }
