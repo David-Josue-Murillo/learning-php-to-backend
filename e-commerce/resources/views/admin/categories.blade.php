@@ -6,7 +6,7 @@
             <h3 class="text-4xl font-bold ml-14">Categorias</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('admin.index') }}">
                         <div class="text-tiny">Dashboard</div>
                     </a>
                 </li>
@@ -36,6 +36,11 @@
                         class="icon-plus"></i>Add new</a>
             </div>
             <div class="wg-table table-all-user">
+
+                @if(Session::has('status'))
+                    <div class="alert alert-success text-center">{{ Session::get('status') }}</div>
+                @endif
+
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -47,40 +52,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>4</td>
-                            <td class="pname">
-                                <div class="image">
-                                    <img src="1718066463.html" alt="" class="image">
-                                </div>
-                                <div class="name">
-                                    <a href="#" class="body-title-2">Category4</a>
-                                </div>
-                            </td>
-                            <td>category4</td>
-                            <td><a href="#" target="_blank">2</a></td>
-                            <td>
-                                <div class="list-icon-function">
-                                    <a href="#">
-                                        <div class="item edit">
-                                            <i class="icon-edit-3"></i>
-                                        </div>
-                                    </a>
-                                    <form action="#" method="POST">
-                                        <div class="item text-danger delete">
-                                            <i class="icon-trash-2"></i>
-                                        </div>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>{{ $category->id }}</td>
+                                <td class="pname">
+                                    <div class="image">
+                                        <img src="{{ aseet('uploads/categories/'.$category->image) }}" alt="{{ $category->name }}" class="image">
+                                    </div>
+                                    <div class="name">
+                                        <a href="#" class="body-title-2">{{ $category->name }}</a>
+                                    </div>
+                                </td>
+                                <td>{{ $category->slug }}</td>
+                                <td><a href="#" target="_blank">0</a></td>
+                                <td>
+                                    <div class="list-icon-function">
+                                        <a href="#">
+                                            <div class="item edit">
+                                                <i class="icon-edit-3"></i>
+                                            </div>
+                                        </a>
+                                        <form action="#" method="POST">
+                                            <div class="item text-danger delete">
+                                                <i class="icon-trash-2"></i>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="divider"></div>
             <div class="flex items-center justify-between flex-wrap gap10 wgp-pagination">
-
+                {{ $categories->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
