@@ -106,4 +106,9 @@ class AdminController extends Controller
         $categories = Category::orderBy('id', 'DESC')->paginate(10);
         return view('admin.categories', compact('categories'));
     }
+
+    public function category_edit($id) {
+        $category = Category::find($id);
+        return view('admin.category-edit', compact('category'));
+    }
 }
