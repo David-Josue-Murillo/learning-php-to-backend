@@ -15,7 +15,7 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.categories') }}">
-                        <div class="text-tiny">Categorias</div>
+                        <div class="text-tiny">Categories</div>
                     </a>
                 </li>
                 <li>
