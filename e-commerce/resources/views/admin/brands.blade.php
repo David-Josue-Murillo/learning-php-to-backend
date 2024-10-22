@@ -76,9 +76,9 @@
                                             <form action="{{ route('admin.brand.delete', ['id' => $brand->id]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <div class="item text-danger delete">
+                                                <button type="submit" class="item text-danger delete">
                                                     <i class="icon-trash-2"></i>
-                                                </div>
+                                                </button>
                                             </form>
                                         </div>
                                     </td>
@@ -109,7 +109,7 @@
                     type: "warning",
                     buttons: ['No', 'Yes'],
                     confirmButtonColor: '#dc3545',
-                }).then(function(result) => {
+                }).then(function(result) {
                     if (result) {
                         form.submit();
                     }
