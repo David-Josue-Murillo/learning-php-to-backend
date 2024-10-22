@@ -127,7 +127,7 @@ class AdminController extends Controller
         $image = $request->file('image');
         $file_extension = $request->file('image')->extension();
         $file_name = Carbon::now()->timestamp.'.'.$file_extension;
-        $this->GenerateBrandThumbailsImage($image, $file_name);
+        $this->GenerateCategoryThumbailsImage($image, $file_name);
         
         $category->image = $file_name;
         $category->save(); 
@@ -158,11 +158,20 @@ class AdminController extends Controller
             $image = $request->file('image');
             $file_extension = $request->file('image')->extension();
             $file_name = Carbon::now()->timestamp.'.'.$file_extension;
-            $this->GenerateBrandThumbailsImage($image, $file_name);
+            $this->GenerateCategoryThumbailsImage($image, $file_name);
             $category->image = $file_name;
         }
 
         $category->save();
         return redirect()->route('admin.categories')->with('status', 'Category has been update succefully.');
+    }
+
+    public function GenerateCategoryThumbailsImage($image, $imageName){
+        $destinantion_path = public_path('uploads/categories');
+        $img = Image::read($image->path());
+        $img->cover(124,124,"top");
+        $img->resize(124,124, function($contraint){
+            $contraint->aspectRatio();
+        })->save($destinantion_path.'/'.$imageName);
     }
 }
