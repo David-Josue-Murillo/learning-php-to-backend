@@ -27,8 +27,9 @@ Route::middleware(['auth', AuthAdmin::class])->group(function(){
 
     // Manejo de rutras para las categorias
     Route::get('/admin/categories', [AdminController::class, 'categories'])->name('admin.categories');
-    Route::get('admin/category/edit/{id}', [AdminController::class, 'category_edit'])->name('admin.category.edit');
-    Route::put('admin/category/update', [AdminController::class, 'category_update'])->name('admin.category.update');
+    Route::get('/admin/category/add', [AdminController::class, 'category_add'])->name('admin.category.add');
+    Route::get('/admin/category/edit/{id}', [AdminController::class, 'category_edit'])->name('admin.category.edit');
+    Route::put('/admin/category/update', [AdminController::class, 'category_update'])->name('admin.category.update');
 });
 
 

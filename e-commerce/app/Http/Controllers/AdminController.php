@@ -107,6 +107,10 @@ class AdminController extends Controller
         return view('admin.categories', compact('categories'));
     }
 
+    public function category_add(){
+        return view('admin.category-add');
+    }
+
     public function category_edit($id) {
         $category = Category::find($id);
         return view('admin.category-edit', compact('category'));
