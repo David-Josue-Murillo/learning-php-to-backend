@@ -62,7 +62,7 @@ class AdminController extends Controller
 
         $brand = Brand::find($request->id);
         $brand->name = $request->name;
-        $brand->slug = Str::slug($request->name);
+        $brand->slug = Str::slug($request->slug);
 
         if($request->hasFile('image')){
             if(File::exists(public_path('uploads/brands').'/'.$brand->image)){
