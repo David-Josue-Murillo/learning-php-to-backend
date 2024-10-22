@@ -51,7 +51,7 @@
                                 <div class="center-heading">Main Home</div>
                                 <ul class="menu-list">
                                     <li class="menu-item">
-                                        <a href="index.html" class="">
+                                        <a href="{{ route('admin.index') }}" class="">
                                             <div class="icon"><i class="icon-grid"></i></div>
                                             <div class="text">Dashboard</div>
                                         </a>
@@ -103,7 +103,7 @@
                                         </a>
                                         <ul class="sub-menu">
                                             <li class="sub-menu-item">
-                                                <a href="add-category.html" class="">
+                                                <a href="{{ route('admin.category.add') }}" class="">
                                                     <div class="text">New Category</div>
                                                 </a>
                                             </li>
