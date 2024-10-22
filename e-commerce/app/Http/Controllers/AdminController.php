@@ -118,10 +118,10 @@ class AdminController extends Controller
             'slug' => 'required|unique:categories,slug,'.$request->id,
             'image' => 'mimes:png,jpg,jpeg|max:2048'
         ]);
-
+    
         $category = Category::find($request->id);
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
+        $category->slug = Str::slug($request->slug);
 
         if($request->hasFile('image')){
             if(File::exists(public_path('uploads/categories').'/'.$category->image)){
