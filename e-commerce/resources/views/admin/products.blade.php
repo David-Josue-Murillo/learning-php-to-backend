@@ -1,11 +1,11 @@
-@extends('admin.layout')
+@extends('admin.index')
 
 @section('content')
 
 <div class="main-content-inner">
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>All Products</h3>
+            <h3 class="text-4xl font-bold ml-14">All Products</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li>
                     <a href="index.html">
