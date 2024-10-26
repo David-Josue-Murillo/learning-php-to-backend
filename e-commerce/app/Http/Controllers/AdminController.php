@@ -202,7 +202,7 @@ class AdminController extends Controller
     public function product_store(Request $request){
         $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique:products,sluf',
+            'slug' => 'required|unique:products,slug',
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required',

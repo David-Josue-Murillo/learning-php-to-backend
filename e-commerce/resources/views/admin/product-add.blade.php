@@ -28,10 +28,9 @@
             </ul>
         </div>
         <!-- form-add-product -->
-        <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}">
+        <form class="tf-section-2 form-add-product" action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="_token" value="8LNRTO4LPXHvbK2vgRcXqMeLgqtqNGjzWSNru7Xx"
-                autocomplete="off">
+            
             <div class="wg-box">
                 <fieldset class="name">
                     <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
@@ -270,9 +269,11 @@
                 });
             });
 
-            $('input[name='name']').on('change', function(e) {
-                $('input[name='slug']').val(stringToSlug($(this).val()));
+            $('input[name="name"]').on('change', function(e) {
+                $('input[name="slug"]').val(stringToSlug($(this).val()));
             });
+
+
         });
 
         function stringToSlug(Text) {
