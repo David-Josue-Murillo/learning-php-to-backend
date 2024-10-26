@@ -35,6 +35,7 @@ Route::middleware(['auth', AuthAdmin::class])->group(function(){
 
     // Manejo de rutas para los productos
     Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
+    Route::get('/admin/product/add', [AdminController::class, 'product_add'])->name('admin.product.add');
 });
 
 
