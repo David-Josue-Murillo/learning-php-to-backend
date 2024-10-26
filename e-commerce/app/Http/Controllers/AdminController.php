@@ -248,7 +248,7 @@ class AdminController extends Controller
         $counter = 1;
 
         if($request->hasFile('images')){
-            $allowedFileExtion = ['jpg', 'png', 'jpeg']; // Extenseions permitidas
+            $allowedFileExtion = ['jpg', 'png', 'jpeg']; // Extensiones permitidas
             $files = $request->file('images');
 
             foreach($files as $file){
@@ -269,7 +269,7 @@ class AdminController extends Controller
         $product->images = $gallery_images;
         $product->save();
 
-        return redirect()->route('admin.products')->with('status', 'Product has been created succefully.');
+        return redirect()->route('admin.products')->with('status', 'Product has been added succefully.');
     }
 
     public function GeneratedProductThumbnailImage($image, $image_name){
