@@ -31,6 +31,7 @@
         <form class="tf-section-2 form-add-product" action="" method="POST" enctype="multipart/form-data">
             @csrf
             
+            <input type="hidden" name="id" value="{{ $product->id }}">
             <div class="wg-box">
                 <fieldset class="name">
                     <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
@@ -93,7 +94,7 @@
                             class="tf-color-1">*</span></div>
                     <textarea class="mb-10 ht-150" name="short_description"
                         placeholder="Short Description" tabindex="0" aria-required="true"
-                        required="">{{ old('short_description') }}</textarea>
+                        required="">{{ $product->short_description }}</textarea>
                     <div class="text-tiny">Do not exceed 100 characters when entering the
                         product name.</div>
                 </fieldset>
