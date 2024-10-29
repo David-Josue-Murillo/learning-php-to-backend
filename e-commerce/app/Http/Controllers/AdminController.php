@@ -307,7 +307,7 @@ class AdminController extends Controller
             'stock_status' => 'required',
             'featured' => 'required',
             'quantity' => 'required',
-            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'image' => 'mimes:png,jpg,jpeg|max:2048',
             'category_id' => 'required',
             'brand_id' => 'required',
         ]);
@@ -376,9 +376,9 @@ class AdminController extends Controller
             }
 
             $gallery_images = implode(',', $gallery_arr);
+            $product->images = $gallery_images;
         }
 
-        $product->images = $gallery_images;
         $product->save();
         return redirect()->route('admin.products')->with('status, Product has been updated successfully!');
     }
